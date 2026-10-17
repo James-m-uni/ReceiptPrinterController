@@ -1,0 +1,5 @@
+serial
+usb
+pyserial
+escpos
+pyusb
