@@ -35,3 +35,14 @@ class PosPrinter:
     """Write text to the printer without a line return at the end of each phrase"""
     def dump_write(self, text: str):
         self.endpoint.write(bytes(text, 'utf-8'))
+
+    """Send a cut command to the printer. 0 = partial cut 1 = full cut."""
+    def paper_cut(self, cut_type: int):
+        if cut_type == 0:
+            self.endpoint.write(b"\x1DV\x00")
+        elif cut_type == 1:
+            self.endpoint.write(b"\x1DV\x01")
+
+    def buzzer(self, time: int):
+        self.endpoint.write(b"\x1B\x1E")
+
